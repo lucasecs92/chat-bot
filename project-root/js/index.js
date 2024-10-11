@@ -13,27 +13,29 @@ userInput.addEventListener('keydown', (event) => {
 
 function sendMessage() {
     const message = userInput.value.trim();
-    // if message = empty do nothing
+    // se mensagem = vazio, não faça nada
     if (message === '') {
         return;
     }
-    // if message = developer - show our message
+    // se mensagem = desenvolvedor, mostre nossa mensagem
     else if (message === 'developer') {
-        // clear input value
+        // limpar valor do campo de entrada
         userInput.value = '';
-        // append message as user - we will code it's function
+        // anexar mensagem como usuário
         appendMessage('user', message);
-        // sets a fake timeout that showing loading on send button
+        // define um tempo limite falso que mostra o carregamento no botão de envio
         setTimeout(() => {
-            // send our message as bot(sender : bot)
+            // envie nossa mensagem como bot(sender : bot)
             appendMessage('bot', 'This Source Coded By Lucas');
-            // change button icon to default
+            // alterar ícone do botão para padrão
             buttonIcon.classList.add('fa-solid', 'fa-paper-plane');
             buttonIcon.classList.remove('fas', 'fa-spinner', 'fa-pulse');
         }, 2000);
         return;
     }
 
+    // senão se nenhuma das opções acima
+    // anexa a mensagem do usuário à tela
     appendMessage('user', message);
     userInput.value = '';
 
@@ -70,7 +72,7 @@ function sendMessage() {
 
 function appendMessage(sender, message) {
     info.style.display = "none";
-    // change send button icon to loading using fontawesome
+    // alterar o ícone do botão de envio para carregar usando fontawesome
     buttonIcon.classList.remove('fa-solid', 'fa-paper-plane');
     buttonIcon.classList.add('fas', 'fa-spinner', 'fa-pulse');
 
@@ -84,7 +86,7 @@ function appendMessage(sender, message) {
     messageElement.classList.add(sender);
     messageElement.innerText = message;
 
-    // add icons depending on who send message bot or user
+    // adicione ícones dependendo de quem enviou a mensagem, bot ou usuário
     if (sender === 'user') {
         icon.classList.add('fa-regular', 'fa-user');
         iconElement.setAttribute('id', 'user-icon');

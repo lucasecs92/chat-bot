@@ -1,4 +1,6 @@
+/* font-family: 'Poppins', sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* tema: gruvbox dark */
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -6,18 +8,17 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #343541;
+  background-color: rgb(40, 40, 40);
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ccc;
-  border-bottom: 1px solid #5c5c66;
+  color: rgb(223, 191, 142);
+  border-bottom: 1px solid rgb(223, 191, 142);
   height: 45px;
 }
-
 .header h3 {
   font-size: 17px;
   font-weight: 500;
@@ -38,32 +39,30 @@ body {
   justify-content: center;
   flex: 20;
 }
-
 .info a {
-  color: #fff;
+  color: rgb(223, 191, 142);
   text-decoration: none;
   font-size: 25px;
   font-weight: bold;
   transition: all 0.3s ease;
 }
-
 .info a:hover {
-  color: #4caf50;
+  color: rgb(234, 105, 98);
 }
 
 .input-container {
-  background-color: #343541;
+  background-color: rgb(40, 40, 40);
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #5c5c66;
+  border-top: 1px solid rgb(223, 191, 142);
   position: sticky;
   bottom: 0;
 }
 
 #user-input {
-  background-color: #40414f;
-  color: #fff;
+  background-color: rgb(102, 92, 84);
+  color: rgb(223, 191, 142);
   border: none;
   outline: none;
   padding: 8px;
@@ -72,14 +71,12 @@ body {
   font-weight: 400;
   border-radius: 5px;
 }
-
 #user-input::-moz-placeholder {
-  color: #8e8e8e;
+  color: rgb(146, 131, 116);
   font-weight: 400;
 }
-
 #user-input::placeholder {
-  color: #8e8e8e;
+  color: rgb(146, 131, 116);
   font-weight: 400;
 }
 
@@ -90,15 +87,14 @@ body {
   padding: 8px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #4caf50;
-  color: #fff;
+  background-color: rgb(169, 182, 101);
+  color: rgb(102, 92, 84);
   cursor: pointer;
   margin-left: 15px;
   transition: all 0.3s ease;
 }
-
 #send-button:hover {
-  background-color: #388e3c;
+  background-color: rgb(166, 190, 43);
 }
 
 .chat-container {
@@ -116,32 +112,29 @@ body {
   font-size: 14px;
   line-height: 1.6;
 }
-
 #chat-log i {
   margin-right: 10px;
   color: #fff;
   border-radius: 5px;
 }
+#chat-log #user-icon i {
+  background-color: rgb(169, 182, 101);
+  padding: 10px 11px;
+}
+#chat-log #bot-icon i {
+  background-color: rgb(211, 134, 155);
+  padding: 10px 8px 11px;
+}
 
 .bot, .user {
   display: flex;
   align-items: flex-start;
-  color: #eee;
+  color: rgb(223, 191, 142);
   width: 100%;
   padding: 15px 7px 15px 10px;
   border-radius: 6px;
 }
 
 .bot {
-  background-color: #444654;
-}
-
-#chat-log #user-icon i {
-  background-color: #19c37d;
-  padding: 10px 11px;
-}
-
-#chat-log #bot-icon i {
-  background-color: #9859b7;
-  padding: 10px 8px 11px;
+  background-color: rgb(102, 92, 84);
 }/*# sourceMappingURL=global.css.map */

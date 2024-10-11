@@ -1,10 +1,19 @@
+/* font-family: 'Poppins', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-$cor-fundo: #343541;
-$cor-texto: #ccc;
-
-$cor-primaria: #4caf50;
-$cor-secundaria: #9859b7;
+/* tema: gruvbox dark */
+$fundo: rgb(40, 40, 40);
+$normal-black: rgb(102, 92, 84);
+$bright-black: rgb(146, 131, 116);
+$red: rgb(234, 105, 98);
+$green: rgb(169, 182, 101);
+$green-hover: rgb(166, 190, 43);
+$normal-yellow: rgb(231, 138, 78);
+$bright-yellow: rgb(227, 168, 78);
+$blue: rgb(125, 174, 163);
+$magenta: rgb(211, 134, 155);
+$cyan: rgb(137, 180, 130);
+$texto: rgb(223, 191, 142);
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -13,21 +22,20 @@ $cor-secundaria: #9859b7;
 body {
     margin: 0;
     padding: 0;
-    background-color: #343541;
+    background-color: $fundo;
 }
 
 .header {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ccc;
-    border-bottom: 1px solid #5c5c66;
+    color: $texto;
+    border-bottom: 1px solid $texto;
     height: 45px;
-}
-
-.header h3 {
-    font-size: 17px;
-    font-weight: 500;
+    h3 {
+        font-size: 17px;
+        font-weight: 500;
+    }
 }
 
 .container {
@@ -44,33 +52,31 @@ body {
     align-items: center;
     justify-content: center;
     flex: 20;
+    a {
+        color: $texto;
+        text-decoration: none;
+        font-size: 25px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        &:hover{
+            color: $red;
+        }
+    } 
 }
 
-.info a{
-    color: #fff;
-    text-decoration: none;
-    font-size: 25px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.info a:hover{
-    color: #4caf50;
-}
-
-.input-container{
-    background-color: #343541;
+.input-container {
+    background-color: $fundo;
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #5c5c66;
+    border-top: 1px solid $texto;
     position: sticky;
     bottom: 0;
 }
 
-#user-input{
-    background-color: #40414f;
-    color: #fff;
+#user-input {
+    background-color: $normal-black;
+    color: $texto;
     border: none;
     outline: none;
     padding: 8px;
@@ -78,72 +84,67 @@ body {
     font-size: 14px;
     font-weight: 400;
     border-radius: 5px;
+    &::placeholder {
+        color: $bright-black;
+        font-weight: 400;
+    }
 }
 
-#user-input::placeholder{
-    color: #8e8e8e;
-    font-weight: 400;
-}
-
-#send-button{
+#send-button {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 8px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #4caf50;
-    color: #fff;
+    background-color: $green;
+    color: $normal-black;
     cursor: pointer;
     margin-left: 15px;
     transition: all 0.3s ease;
+    &:hover {
+        background-color: $green-hover;
+    }
 }
 
-#send-button:hover{
-    background-color: #388e3c;
-}
-
-.chat-container{
+.chat-container {
     flex: 1;
 }
 
-.chat-box{
+.chat-box {
     display: flex;
     align-items: center;
     padding: 10px 15px;
 }
 
-#chat-log{
+#chat-log {
     margin-bottom: 10px;
     font-size: 14px;
     line-height: 1.6;
+    i {
+        margin-right: 10px;
+        color: #fff;
+        border-radius: 5px;
+    }
+    #user-icon i {
+        background-color: $green;
+        padding: 10px 11px;
+    }
+    #bot-icon i {
+        background-color: $magenta;
+        padding: 10px 8px 11px;
+    }
 }
 
-#chat-log i{
-    margin-right: 10px;
-    color: #fff;
-    border-radius: 5px;
-}
-
-.bot, .user{
+.bot, .user {
     display: flex;
     align-items: flex-start;
-    color: #eee;
+    color: $texto;
     width: 100%;
     padding: 15px 7px 15px 10px;
     border-radius: 6px;
 }
 
-.bot{
-    background-color: #444654;
-}
-
-#chat-log #user-icon i{
-    background-color: #19c37d;
-    padding: 10px 11px;
-}
-
-#chat-log #bot-icon i{
-    background-color: #9859b7;
-    padding: 10px 8px 11px;
+.bot {
+    background-color: $normal-black;
 }
