@@ -29,12 +29,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $texto;
-    border-bottom: 1px solid $texto;
+    border-bottom: 1px solid $bright-black;
     height: 45px;
     h3 {
         font-size: 17px;
-        font-weight: 500;
+        font-weight: 500;    
+        color: $bright-black;
     }
 }
 
@@ -69,7 +69,7 @@ body {
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid $texto;
+    border-top: 1px solid $bright-black;
     position: sticky;
     bottom: 0;
 }

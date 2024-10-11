@@ -15,13 +15,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(223, 191, 142);
-  border-bottom: 1px solid rgb(223, 191, 142);
+  border-bottom: 1px solid rgb(146, 131, 116);
   height: 45px;
 }
 .header h3 {
   font-size: 17px;
   font-weight: 500;
+  color: rgb(146, 131, 116);
 }
 
 .container {
@@ -55,7 +55,7 @@ body {
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid rgb(223, 191, 142);
+  border-top: 1px solid rgb(146, 131, 116);
   position: sticky;
   bottom: 0;
 }
