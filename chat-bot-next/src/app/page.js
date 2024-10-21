@@ -36,7 +36,7 @@ export default function Home() {
     const options = {
       method: "POST",
       headers: {
-        "x-rapidapi-key": "ef2122feebmsh38336795674fe3cp13c5ebjsnddb427cd2a70",
+        "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
         "x-rapidapi-host": "chat-gpt26.p.rapidapi.com",
         "Content-Type": "application/json",
       },
