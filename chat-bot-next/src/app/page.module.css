@@ -1,0 +1,142 @@
+/* tema: gruvbox dark */
+.container {
+  max-width: 920px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(146, 131, 116);
+  height: 45px;
+}
+.header h3 {
+  font-size: 17px;
+  font-weight: 500;
+  color: rgb(146, 131, 116);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 20;
+}
+.info a {
+  color: rgb(223, 191, 142);
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.info a:hover {
+  color: rgb(234, 105, 98);
+}
+
+.inputContainer {
+  background-color: rgb(40, 40, 40);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgb(146, 131, 116);
+  position: sticky;
+  bottom: 0;
+}
+
+.userInput {
+  background-color: rgb(102, 92, 84);
+  color: rgb(223, 191, 142);
+  border: none;
+  outline: none;
+  padding: 8px;
+  flex: 9;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 5px;
+}
+.userInput::-moz-placeholder {
+  color: rgb(146, 131, 116);
+  font-weight: 400;
+}
+.userInput::placeholder {
+  color: rgb(146, 131, 116);
+  font-weight: 400;
+}
+
+.sendButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(169, 182, 101);
+  color: rgb(102, 92, 84);
+  cursor: pointer;
+  margin-left: 15px;
+  transition: all 0.3s ease;
+}
+.sendButton:hover {
+  background-color: rgb(166, 190, 43);
+}
+
+.chatContainer {
+  flex: 1;
+}
+
+.chatLog {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.chatBox {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 15px;
+}
+
+.icon {
+  margin-right: 10px;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.userIcon {
+  background-color: rgb(169, 182, 101);
+  padding: 10px;
+  border-radius: 5px;
+}
+.botIcon {
+  background-color: rgb(211, 134, 155);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.bot, .user {
+  display: flex;
+  align-items: flex-start;
+  color: rgb(223, 191, 142);
+  width: 100%;
+  padding: 15px 7px 15px 10px;
+  border-radius: 6px;
+}
+
+.bot {
+  background-color: rgb(102, 92, 84);
+}
+
+/* efeito de rotação contínua do icone de carregamento */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
