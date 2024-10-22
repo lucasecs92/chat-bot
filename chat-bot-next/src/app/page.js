@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Info from "@/components/Info";
-import ChatLog from "@/components/ChatLog";
 import Input from "@/components/Input";
 import styles from "./page.module.css";
 import ChatMessage from "@/components/ChatMessage";
@@ -69,7 +68,7 @@ function ChatContainer() {
     const newMessage = { sender, content: messageContent };
     setChatLog((prevChatLog) => [...prevChatLog, newMessage]);
   };
-  
+
   return (
     <>
       <section className={styles.container}>
