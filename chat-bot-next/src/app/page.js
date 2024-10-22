@@ -1,18 +1,20 @@
 "use client";
 
-import Image from "next/image";
-import styles from "./page.module.css";
-import { FaPaperPlane, FaRobot, FaSpinner, FaUser } from "react-icons/fa6";
 import { useState } from "react";
+import Header from "@/components/Header";
+import Info from "@/components/Info";
+import ChatLog from "@/components/ChatLog";
+import Input from "@/components/Input";
+import styles from "./page.module.css";
 
-export default function Home() {
+function ChatContainer() {
   const [message, setMessage] = useState("");
   const [chatLog, setChatLog] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const handleMessageChange = (e) => setMessage(e.target.value);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = (message) => {
     if (message.trim() === "") return;
 
     // Adiciona a mensagem do usuário ao log
@@ -76,56 +78,20 @@ export default function Home() {
   return (
     <>
       <section className={styles.container}>
-        <section className={styles.header}>
-          <h3>Basic ChatGPT Bot</h3>
-        </section>
-
-        {/* Condicionalmente exibe a .info somente quando o chatLog está vazio */}
-        {chatLog.length === 0 && (
-          <section className={styles.info}>
-            <a href="https://portfolio-devlucas.vercel.app/" target="_blank">
-              Coded by Lucas
-            </a>
-          </section>
-        )}
-
+        <Header />
+        <Info chatLog={chatLog}/>
         <section className={styles.chatContainer}>
-          <section className={styles.chatLog}>
-            {chatLog.map((msg, index) => (
-              <section key={index} className={styles.chatBox}>
-
-                <section className={styles.icon}>
-                  {msg.sender === "user" ? (
-                    <FaUser className={styles.userIcon} />
-                  ) : (
-                    <FaRobot className={styles.botIcon} />
-                  )}
-                </section>
-
-                <section className={styles[msg.sender]}>{msg.content}</section>
-              </section>
-            ))}
-          </section>
+          <ChatLog chatLog={chatLog}/>
         </section>
-
-        <section className={styles.inputContainer}>
-          <input
-            type="text"
-            className={styles.userInput}
-            value={message}
-            onChange={handleMessageChange}
-            onKeyDown={handleKeyPress}
-            placeholder="Send a message."
-          />
-          <button className={styles.sendButton} onClick={handleSendMessage} disabled={loading}>
-            {loading ? (
-              <FaSpinner className={styles.spinner}/>
-            ) : (
-              <FaPaperPlane />
-            )}
-          </button>
-        </section>
+        <Input
+          message={message}
+          onChange={handleMessageChange}
+          onSend={handleSendMessage}
+          loading={loading}
+        />
       </section>
     </>
   );
 }
+
+export default ChatContainer;

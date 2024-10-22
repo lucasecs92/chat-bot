@@ -1,0 +1,16 @@
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 20;
+}
+.info a {
+    color: rgb(223, 191, 142);
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.info a:hover {
+    color: rgb(234, 105, 98);
+}

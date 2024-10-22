@@ -1,0 +1,36 @@
+.chatBox {
+    display: flex;
+    align-items: flex-end;
+    padding: 10px 15px;
+}
+
+.icon {
+    margin-right: 10px;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.userIcon {
+    background-color: rgb(169, 182, 101);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.botIcon {
+    background-color: rgb(211, 134, 155);
+    padding: 10px;
+    border-radius: 5px;
+}
+  
+.bot, .user {
+    display: flex;
+    align-items: flex-start;
+    color: rgb(223, 191, 142);
+    width: 100%;
+    padding: 15px 7px 15px 10px;
+    border-radius: 6px;
+}
+  
+.bot {
+    background-color: rgb(102, 92, 84);
+}
