@@ -6,6 +6,7 @@ import Info from "@/components/Info";
 import ChatLog from "@/components/ChatLog";
 import Input from "@/components/Input";
 import styles from "./page.module.css";
+import ChatMessage from "@/components/ChatMessage";
 
 function ChatContainer() {
   const [message, setMessage] = useState("");
@@ -68,20 +69,16 @@ function ChatContainer() {
     const newMessage = { sender, content: messageContent };
     setChatLog((prevChatLog) => [...prevChatLog, newMessage]);
   };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSendMessage();
-    }
-  };
-
+  
   return (
     <>
       <section className={styles.container}>
         <Header />
         <Info chatLog={chatLog}/>
         <section className={styles.chatContainer}>
-          <ChatLog chatLog={chatLog}/>
+          {chatLog.map((msg, index) => (
+            <ChatMessage key={index} message={msg} />
+          ))}
         </section>
         <Input
           message={message}
