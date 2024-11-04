@@ -39,18 +39,18 @@ function ChatContainer() {
       method: "POST",
       headers: {
         "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
-        "x-rapidapi-host": "chat-gpt26.p.rapidapi.com",
+        "x-rapidapi-host": 'cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com',
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o",
         messages: [{ role: "user", content: userMessage }],
       }),
     };
 
     setLoading(true);
 
-    fetch("https://chat-gpt26.p.rapidapi.com/", options)
+    fetch("https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions", options)
       .then((response) => response.json())
       .then((data) => {
         appendMessage("bot", data.choices[0].message.content);
