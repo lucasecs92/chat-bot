@@ -1,4 +1,5 @@
 "use client";
+require('dotenv').config();
 
 import { useState } from "react";
 import Header from "@/components/Header";
