@@ -1,12 +1,14 @@
+
 "use client";
-require('dotenv').config();
 
 import { useState } from "react";
 import Header from "@/components/Header";
 import Info from "@/components/Info";
 import Input from "@/components/Input";
-import styles from "./page.module.css";
 import ChatMessage from "@/components/ChatMessage";
+
+import sendMessageToAPI from "../utils/apiConfig";
+import styles from "./page.module.css";
 
 function ChatContainer() {
   const [message, setMessage] = useState("");
@@ -28,41 +30,19 @@ function ChatContainer() {
         setLoading(false);
       }, 2000);
     } else {
-      // Simular envio de mensagem para API
-      sendMessageToAPI(message);
+      setLoading(true);
+      sendMessageToAPI(message)
+        .then((botMessage) => {
+          appendMessage("bot", botMessage);
+          setLoading(false);
+        })
+        .catch((error) => {
+          appendMessage("bot", error.message);
+          setLoading(false);
+        });
     }
 
     setMessage(""); // Limpar campo de entrada após o envio
-  };
-
-  const sendMessageToAPI = (userMessage) => {
-    const options = {
-      method: "POST",
-      headers: {
-        "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
-        "x-rapidapi-host": 'cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com',
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4o",
-        messages: [{ role: "user", content: userMessage }],
-      }),
-    };
-
-    setLoading(true);
-
-    fetch("https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions", options)
-      .then((response) => response.json())
-      .then((data) => {
-        appendMessage("bot", data.choices[0].message.content);
-        setLoading(false);
-      })
-      .catch((error) => {
-        if (error.name === "TypeError") {
-          appendMessage("bot", "Error: Check Your API Key!");
-        }
-        setLoading(false);
-      });
   };
 
   const appendMessage = (sender, messageContent) => {
@@ -74,7 +54,7 @@ function ChatContainer() {
     <>
       <section className={styles.container}>
         <Header />
-        <Info chatLog={chatLog}/>
+        <Info chatLog={chatLog} />
         <section className={styles.chatContainer}>
           {chatLog.map((msg, index) => (
             <ChatMessage key={index} message={msg} />
