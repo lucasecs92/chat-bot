@@ -10,4 +10,10 @@
     font-size: 17px;
     font-weight: 500;
     color: rgb(146, 131, 116);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.headerContainer h3:hover {
+    color: rgb(234, 105, 98);
 }
