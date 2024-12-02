@@ -12,6 +12,7 @@ const Input = ({ message, onChange, onSend, loading }) => {
     <section className={styles.inputContainer}>
       <input
         type="text"
+        id="user-message"
         className={styles.userInput}
         value={message}
         onChange={onChange}
