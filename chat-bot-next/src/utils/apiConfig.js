@@ -1,12 +1,9 @@
 
-import dotenv from "dotenv"; 
-dotenv.config();
-
 const sendMessageToAPI = (userMessage) => {
     const options = {
         method: "POST",
         headers: {
-            "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
+            "x-rapidapi-key": process.env.NEXT_PUBLIC_API_KEY,
             "x-rapidapi-host": 'cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com',
             "Content-Type": "application/json",
         },
