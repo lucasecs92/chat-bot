@@ -1,3 +1,13 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["next/babel"]
+    }
+  },
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    // Adicione regras personalizadas aqui, se necessário
+  }
 }

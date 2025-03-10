@@ -1,5 +1,4 @@
-
-const sendMessageToAPI = (userMessage) => {
+const sendMessageToAPI = async (userMessage) => {
     const options = {
         method: "POST",
         headers: {

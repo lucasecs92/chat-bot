@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "14.2.15"
+    "eslint-config-next": "14.2.15",
+    "@babel/eslint-parser": "^7.23.0"
   }
 }
