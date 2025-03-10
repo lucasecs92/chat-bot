@@ -6,7 +6,7 @@
       "presets": ["next/babel"]
     }
   },
-  "extends": ["next/core-web-vitals"],
+  "extends": ["next/babel","next/core-web-vitals"],
   "rules": {
     // Adicione regras personalizadas aqui, se necessário
   }
