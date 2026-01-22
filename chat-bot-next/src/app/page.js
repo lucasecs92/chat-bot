@@ -16,57 +16,59 @@ function ChatContainer() {
 
   const handleMessageChange = (e) => setMessage(e.target.value);
 
-  const handleSendMessage = (message) => {
-    if (message.trim() === "") return;
+  const handleSendMessage = async (msgText) => {
+    if (msgText.trim() === "") return;
 
     // Adiciona a mensagem do usuário ao log
-    appendMessage("user", message);
+    const userMsg = { id: Date.now(), sender: "user", content: msgText };
+    setChatLog((prev) => [...prev, userMsg]);
+    setMessage(""); // Limpar campo imediatamente
 
-    if (message === "developer") {
+    if (msgText.toLowerCase() === "developer") {
       setLoading(true);
       setTimeout(() => {
-        appendMessage("bot", "This Source Coded By Lucas");
+        appendBotMessage("This Source Coded By Lucas");
         setLoading(false);
-      }, 2000);
+      }, 1000);
     } else {
       setLoading(true);
-      sendMessageToAPI(message)
-        .then((botMessage) => {
-          appendMessage("bot", botMessage);
-          setLoading(false);
-        })
-        .catch((error) => {
-          appendMessage("bot", error.message);
-          setLoading(false);
-        });
+      try {
+        const botResponse = await sendMessageToAPI(msgText);
+        appendBotMessage(botResponse);
+      } catch (error) {
+        appendBotMessage("Erro: " + error.message);
+      } finally {
+        setLoading(false);
+      }
     }
-
-    setMessage(""); // Limpar campo de entrada após o envio
   };
 
-  const appendMessage = (sender, messageContent) => {
-    const newMessage = { sender, content: messageContent };
-    setChatLog((prevChatLog) => [...prevChatLog, newMessage]);
+  const appendBotMessage = (content) => {
+    setChatLog((prev) => [
+      ...prev,
+      { id: Date.now() + 1, sender: "bot", content: content },
+    ]);
   };
 
   return (
-    <>
-      <section className={styles.container}>
-        <Header />
-        <Info chatLog={chatLog} />
-        <section className={styles.chatContainer}>
-          {chatLog.map((msg, index) => (
-            <ChatMessage key={index} message={msg} />
-          ))}
-        </section>
-        <Input
-          message={message}
-          onChange={handleMessageChange}
-          onSend={handleSendMessage}
-          loading={loading}
-        />
+    <section className={styles.container}>
+      <Header />
+      <Info chatLog={chatLog} />
+      
+      <section className={styles.chatContainer}>
+        {chatLog.map((msg) => (
+          // Usando msg.id em vez do index do array para melhor performance e evitar bugs
+          <ChatMessage key={msg.id} message={msg} />
+        ))}
       </section>
-    </>
+
+      <Input
+        message={message}
+        onChange={handleMessageChange}
+        onSend={() => handleSendMessage(message)}
+        loading={loading}
+      />
+    </section>
   );
 }
 

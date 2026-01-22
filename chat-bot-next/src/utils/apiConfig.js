@@ -1,26 +1,32 @@
-const sendMessageToAPI = async (userMessage) => {
-    const options = {
-        method: "POST",
-        headers: {
-            "x-rapidapi-key": process.env.NEXT_PUBLIC_API_KEY,
-            "x-rapidapi-host": 'cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com',
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            model: "gpt-4o",
-            messages: [{ role: "user", content: userMessage }],
-        }),
-    };
+import Groq from "groq-sdk";
 
-    return fetch("https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions", options)
-        .then((response) => response.json())
-        .then((data) => data.choices[0].message.content)
-        .catch((error) => {
-            if (error.name === "TypeError") {
-                throw new Error("Check Your API Key!");
-            }
-            throw error;
+const groq = new Groq({ 
+    apiKey: process.env.NEXT_PUBLIC_GROQ_API_KEY,
+    dangerouslyAllowBrowser: true 
+});
+
+const sendMessageToAPI = async (userMessage) => {
+    try {
+        const chatCompletion = await groq.chat.completions.create({
+            messages: [
+                {
+                    role: "user",
+                    content: userMessage,
+                },
+            ],
+            model: "llama-3.3-70b-versatile",
+            temperature: 1,
+            max_completion_tokens: 1024,
+            top_p: 1,
+            stream: false, // Desativado o stream para simplificar o retorno no seu chat atual
         });
+
+        return chatCompletion.choices[0]?.message?.content || "Sem resposta do bot.";
+    } catch (error) {
+        console.error("Erro na API:", error);
+        if (error.status === 401) throw new Error("Chave de API inválida!");
+        throw new Error("Erro ao consultar o Groq. Tente novamente.");
+    }
 };
 
 export default sendMessageToAPI;
