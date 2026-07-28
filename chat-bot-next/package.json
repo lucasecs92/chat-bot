@@ -12,7 +12,6 @@
     "dotenv": "^16.4.5",
     "groq-sdk": "^0.37.0",
     "minimatch": "^10.2.4",
-    "next": "^16.2.12",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-icons": "^5.3.0",
@@ -21,7 +20,8 @@
   "devDependencies": {
     "@babel/eslint-parser": "^8.0.1",
     "eslint": "^10.8.0",
-    "eslint-config-next": "^16.2.12"
+    "eslint-config-next": "^16.2.12",
+    "next": "^16.2.12"
   },
   "overrides": {
     "postcss": "8.5.18"
