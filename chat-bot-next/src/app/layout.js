@@ -1,4 +1,5 @@
 import "./globals.css";
+import "../utils/sharp-security.js";
 
 export const metadata = {
   title: "Create Next App",
