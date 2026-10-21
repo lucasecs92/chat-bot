@@ -57,14 +57,7 @@ info "Atualizando dependências..."
 npm update
 
 info "Corrigindo vulnerabilidades conhecidas..."
-if ! npm audit fix; then
-  warn "O npm audit fix não conseguiu corrigir todas as vulnerabilidades."
-fi
-
-info "Verificando vulnerabilidades restantes..."
-if ! npm audit; then
-  warn "Ainda existem vulnerabilidades pendentes. Consulte o relatório acima."
-fi
+npm audit fix --force
 
 # 4. Validar o projeto
 info "Executando lint..."
@@ -93,10 +86,6 @@ fi
 # 6. Publicação de produção
 info "Publicando na Vercel..."
 vercel --prod
-
-# 7. Correção forçada: última operação do script
-warn "Executando npm audit fix --force como última operação..."
-npm audit fix --force
 
 echo
 info "Manutenção concluída!"
