@@ -57,7 +57,14 @@ info "Atualizando dependências..."
 npm update
 
 info "Corrigindo vulnerabilidades conhecidas..."
-npm audit fix
+if ! npm audit fix; then
+  warn "O npm audit fix não conseguiu corrigir todas as vulnerabilidades."
+fi
+
+info "Verificando vulnerabilidades restantes..."
+if ! npm audit; then
+  warn "Ainda existem vulnerabilidades pendentes. Consulte o relatório acima."
+fi
 
 # 4. Validar o projeto
 info "Executando lint..."
