@@ -1,4 +1,4 @@
-
+bash
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
@@ -60,9 +60,6 @@ npm update
 info "Corrigindo vulnerabilidades conhecidas..."
 npm audit fix
 
-warn "Tentando correção forçada de vulnerabilidades..."
-npm audit fix --force
-
 # 4. Validar o projeto
 info "Executando lint..."
 npm run lint --if-present
@@ -90,6 +87,10 @@ fi
 # 6. Publicação de produção
 info "Publicando na Vercel..."
 vercel --prod
+
+# 7. Correção forçada: última operação do script
+warn "Executando npm audit fix --force como última operação..."
+npm audit fix --force
 
 echo
 info "Manutenção concluída!"
