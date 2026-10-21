@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
@@ -57,7 +58,7 @@ info "Atualizando dependências..."
 npm update
 
 info "Corrigindo vulnerabilidades conhecidas..."
-npm audit fix --force
+npm audit fix
 
 # 4. Validar o projeto
 info "Executando lint..."
