@@ -60,6 +60,9 @@ npm update
 info "Corrigindo vulnerabilidades conhecidas..."
 npm audit fix
 
+warn "Tentando correção forçada de vulnerabilidades..."
+npm audit fix --force
+
 # 4. Validar o projeto
 info "Executando lint..."
 npm run lint --if-present
