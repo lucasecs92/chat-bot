@@ -55,10 +55,10 @@ fi
 
 # 3. Atualizar dependências
 info "Atualizando dependências..."
-npm update
+npm install --legacy-peer-deps
 
 info "Corrigindo vulnerabilidades conhecidas..."
-npm audit fix
+npm audit fix --legacy-peer-deps || warn "Algumas vulnerabilidades não puderam ser corrigidas automaticamente."
 
 # 4. Validar o projeto
 info "Executando lint..."
